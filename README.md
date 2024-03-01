@@ -1,6 +1,6 @@
 # MusicBridge
 
-MusicBridge is an application built to test implementations of the Spotify and Youtube APIs. The app will fetch playlistsalbums from Spotify using the given API key and pass the results to the Youtube API. The returned results from the Youtube API can be passed to youtube-dlp for download.
+MusicBridge is an application built to test implementations of the Spotify and Youtube APIs. The app accepts search terms from the user and queries the Spotify API for similar results and passes them as parameters to the Youtube Data API, the user can choose to download the results of the returned Youtube search, said choices are passed to youtube-dlp for download.
 
 ## Installation (TODO)
 
