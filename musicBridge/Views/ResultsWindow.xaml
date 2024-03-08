@@ -1,0 +1,31 @@
+﻿<Window x:Class="musicBridge.Views.ResultsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:musicBridge.Views"
+        mc:Ignorable="d"
+        Title="ResultsWindow" Height="450" Width="800">
+    <Grid>
+        <ListView x:Name="lvItems">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="{Binding ThumbnailPath}" Width="100" Height="100" />
+                            <StackPanel Orientation="Vertical" Margin="10,0">
+                                <TextBlock Text="{Binding Title}" FontWeight="Bold" FontSize="16"/>
+                                <TextBlock Text="{Binding Creator}" FontStyle="Italic"/>
+                                <TextBlock Text="{Binding Date, StringFormat='{}{0:MMMM dd, yyyy}'}" />
+                            </StackPanel>
+                            <Button Name="BtnDownload" Content="Download" Height="25" Width="75" />
+                        </StackPanel>
+                        <Expander Header="Show Songs" IsExpanded="False">
+                            <ListBox ItemsSource="{Binding Songs}"/>
+                        </Expander>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Window>
