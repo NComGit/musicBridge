@@ -21,7 +21,7 @@ namespace musicBridge.ServiceLayers
             });
         }
 
-        public async Task<List<(string Title, string PlaylistId)>> SearchPlaylistsAsync(string query, int maxResults = 50)
+        public async Task<List<(string Title, string PlaylistId)>> SearchPlaylistsAsync(string query, int maxResults = 10)
         {
             var searchListRequest = _youtubeService.Search.List("snippet");
             searchListRequest.Q = query; // Replace with your search term.

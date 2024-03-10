@@ -66,7 +66,7 @@ namespace musicBridge.ServiceLayers
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.ToString());
+                    System.Windows.MessageBox.Show(ex.ToString());
                     tcs.SetException(ex);
                 }
                 finally

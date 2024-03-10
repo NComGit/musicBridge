@@ -29,7 +29,7 @@ namespace musicBridge.Views
         public ResultsWindow(List<SpotifyArticle> albums)
         {
             InitializeComponent();
-            MessageBox.Show(albums[0].ThumbnailPath);
+            System.Windows.MessageBox.Show(albums[0].ThumbnailPath);
 
             var listItems = new List<SpotifyArticle>();
 
@@ -53,11 +53,11 @@ namespace musicBridge.Views
         private void BtnShowSongs_Click(object sender, RoutedEventArgs e)
         {
             // Find the parent ListBoxItem of the Button (which is inside the DataTemplate of a ListViewItem)
-            var button = sender as Button;
+            var button = sender as System.Windows.Controls.Button;
             var item = FindParent<ListBoxItem>(button);
 
             // Toggle the visibility of the SongsListBox
-            var songsListBox = FindChild<ListBox>(item, "SongsListBox");
+            var songsListBox = FindChild<System.Windows.Controls.ListBox>(item, "SongsListBox");
             songsListBox.Visibility = songsListBox.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
         }
 
