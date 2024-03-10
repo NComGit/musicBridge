@@ -21,6 +21,9 @@ namespace musicBridge
     public partial class MainWindow : Window
     {
         SpotifyService service;
+        private string _ytdlLocation = "";
+        private string _downloadTarget = "";
+        public ytdlpService YoutubeDlp = new ytdlpService();
 
         public MainWindow()
         {
@@ -64,12 +67,40 @@ namespace musicBridge
                 }
                 else
                 {
-                    MessageBox.Show("Please allow access to your spotify account");
+                    System.Windows.MessageBox.Show("Please allow access to your spotify account");
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                System.Windows.MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void BtnSettings_Click(object sender, RoutedEventArgs e)
+        {
+            SettingsWindow settingsWindow = new SettingsWindow(YtdlLocation, DownloadTarget)
+            {
+                Owner = this,
+                WindowStartupLocation = WindowStartupLocation.CenterOwner
+            };
+            settingsWindow.ShowDialog();
+        }
+
+        public string YtdlLocation
+        {
+            get => _ytdlLocation;
+            set
+            {
+                _ytdlLocation = value;
+            }
+        }
+
+        public string DownloadTarget
+        {
+            get => _downloadTarget;
+            set
+            {
+                _downloadTarget = value;
             }
         }
     }

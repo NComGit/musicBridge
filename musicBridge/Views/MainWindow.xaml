@@ -9,6 +9,7 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Button Name="BtnConnect" Content="Connect Services" Click="BtnConnect_Click" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <Button Name="BtnSettings" Content="Settings" Click="BtnSettings_Click" HorizontalAlignment="Left" Margin="681,10,0,0" VerticalAlignment="Top" Width="86"/>
         <TabControl Name="TbcSearch" Margin="0,35,0,125" SelectedIndex="1">
             <TabItem Header="Search By" IsEnabled="False" />
             <TabItem Header="Album Name">
