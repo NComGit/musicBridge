@@ -17,6 +17,8 @@
         <TextBox x:Name="txtDownloadTarget" HorizontalAlignment="Left" Margin="129,57,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="328" Grid.ColumnSpan="2"/>
         <Button x:Name="BrowseYtDlpLocation" Content="..." HorizontalAlignment="Left" Margin="168,12,0,0" VerticalAlignment="Top" Width="30" Height="22" Click="BrowseYtDlpLocation_Click" Grid.Column="1"/>
         <Button x:Name="BrowseDownloadTarget" Content="..." HorizontalAlignment="Left" Margin="168,55,0,0" VerticalAlignment="Top" Width="30" Height="22" Click="BrowseDownloadTarget_Click" Grid.Column="1" />
-        <Button Name="BtnSaveSettings" Content="Save" Click="BtnSaveSettings_Click" HorizontalAlignment="Left" Margin="10,117,0,0" VerticalAlignment="Top" Width="67"/>
+        <Button Name="BtnSaveSettings" Content="Save" Click="BtnSaveSettings_Click" HorizontalAlignment="Left" Margin="10,144,0,0" VerticalAlignment="Top" Width="68"/>
+        <Label Content="Youtube API Key" HorizontalAlignment="Left" Margin="10,96,0,0" VerticalAlignment="Top" Width="119"/>
+        <TextBox x:Name="TbxYoutubeApi" HorizontalAlignment="Left" Margin="129,100,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="328" Grid.ColumnSpan="2"/>
     </Grid>
 </Window>

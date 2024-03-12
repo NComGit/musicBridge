@@ -21,9 +21,10 @@ namespace musicBridge
     public partial class MainWindow : Window
     {
         SpotifyService service;
+        public YoutubeService youtubeService;
         private string _ytdlLocation = "";
         private string _downloadTarget = "";
-        public ytdlpService YoutubeDlp = new ytdlpService();
+        private string _youtubeApiKey = "";
 
         public MainWindow()
         {
@@ -59,6 +60,7 @@ namespace musicBridge
         {
             try
             {
+                youtubeService = new YoutubeService(YoutubeApiKey);
                 service = new SpotifyService();
                 await service.InitializeAsync();
                 if (service.IsAuthenticated == true)
@@ -78,7 +80,7 @@ namespace musicBridge
 
         private void BtnSettings_Click(object sender, RoutedEventArgs e)
         {
-            SettingsWindow settingsWindow = new SettingsWindow(YtdlLocation, DownloadTarget)
+            SettingsWindow settingsWindow = new SettingsWindow(YtdlLocation, DownloadTarget, YoutubeApiKey)
             {
                 Owner = this,
                 WindowStartupLocation = WindowStartupLocation.CenterOwner
@@ -101,6 +103,15 @@ namespace musicBridge
             set
             {
                 _downloadTarget = value;
+            }
+        }
+
+        public string YoutubeApiKey
+        {
+            get => _youtubeApiKey;
+            set
+            {
+                _youtubeApiKey = value;
             }
         }
     }

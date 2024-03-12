@@ -10,36 +10,21 @@ namespace musicBridge.ServiceLayers
 {
     public class ytdlpService
     {
-        public void DownloadVideo(string youtubeUrl, string youtubeDlpPath, string downloadLocation)
+        public static void DownloadPlaylist(string youtubeUrl, string youtubeDlpPath, string downloadLocation)
         {
             try
             {
-                string arguments = $"-x -o \"{downloadLocation}\" \"{youtubeUrl}\"";
+                string strCmdText;
+                strCmdText = $"/C yt-dlp -x {youtubeUrl}";
 
-                ProcessStartInfo startInfo = new ProcessStartInfo()
-                {
-                    FileName = youtubeDlpPath,
-                    Arguments = arguments,
-                    UseShellExecute = false,
-                    RedirectStandardOutput = true,
-                    RedirectStandardError = true,
-                    CreateNoWindow = true
-                };
-
-                // Start the process
-                using (Process process = Process.Start(startInfo))
-                {
-                    string output = process.StandardOutput.ReadToEnd();
-                    string error = process.StandardError.ReadToEnd();
-
-                    process.WaitForExit();
-
-                    Debug.WriteLine(output);
-                    if (!string.IsNullOrEmpty(error))
-                    {
-                        Debug.WriteLine($"Error: {error}");
-                    }
-                }
+                System.Diagnostics.Process process = new System.Diagnostics.Process();
+                System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
+            //    startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+                startInfo.FileName = "cmd.exe";
+                startInfo.Arguments = strCmdText;
+              //  startInfo.Verb = "runas /user:Administrator";
+                process.StartInfo = startInfo;
+                process.Start();
             }
             catch (Exception ex)
             {

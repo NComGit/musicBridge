@@ -18,7 +18,7 @@
                                 <TextBlock Text="{Binding Creator}" FontStyle="Italic"/>
                                 <TextBlock Text="{Binding Date, StringFormat='{}{0:MMMM dd, yyyy}'}" />
                             </StackPanel>
-                            <Button Name="BtnDownload" Content="Download" Height="25" Width="75" />
+                            <Button Name="BtnDownload" Content="Download" Tag="{Binding}" Click="BtnDownload_Click" Height="25" Width="75" />
                         </StackPanel>
                         <Expander Header="Show Songs" IsExpanded="False">
                             <ListBox ItemsSource="{Binding Songs}"/>

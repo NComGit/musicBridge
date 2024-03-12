@@ -23,16 +23,17 @@ namespace musicBridge.Views
     /// </summary>
     public partial class SettingsWindow : Window
     {
-        public SettingsWindow(string ytdlp, string dlLocation)
+        public SettingsWindow(string ytdlp, string dlLocation, string youtubeApi)
         {
             InitializeComponent();
-            StartUp(ytdlp, dlLocation);
+            StartUp(ytdlp, dlLocation,youtubeApi);
         }
 
-        private void StartUp(string ytdlp, string dlLocation)
+        private void StartUp(string ytdlp, string dlLocation , string youtubeApi)
         {
             txtDownloadTarget.Text = dlLocation;
             txtYtDlpLocation.Text = ytdlp;
+            TbxYoutubeApi.Text = youtubeApi;
         }
 
         private void BrowseYtDlpLocation_Click(object sender, RoutedEventArgs e)
@@ -76,6 +77,7 @@ namespace musicBridge.Views
             {
                 mainWnd.YtdlLocation = txtYtDlpLocation.Text;
                 mainWnd.DownloadTarget = txtDownloadTarget.Text;
+                mainWnd.YoutubeApiKey = TbxYoutubeApi.Text;
                 this.Close();
             }
             else

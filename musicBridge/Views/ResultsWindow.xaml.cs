@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using musicBridge.Models;
+using musicBridge.ServiceLayers;
 using SpotifyArticle = musicBridge.Models.SpotifyArticle;
 
 namespace musicBridge.Views
@@ -29,8 +30,6 @@ namespace musicBridge.Views
         public ResultsWindow(List<SpotifyArticle> albums)
         {
             InitializeComponent();
-            System.Windows.MessageBox.Show(albums[0].ThumbnailPath);
-
             var listItems = new List<SpotifyArticle>();
 
             if (albums != null)
@@ -116,6 +115,33 @@ namespace musicBridge.Views
             }
 
             return foundChild;
+        }
+
+        private async void BtnDownload_Click(object sender, RoutedEventArgs e)
+        {
+            var button = sender as System.Windows.Controls.Button;
+            var album = button.Tag as SpotifyArticle;
+ 
+            var searchQuery = album.Title.ToString() + album.Creator;
+            System.Windows.MessageBox.Show(searchQuery);
+            var mainWnd = System.Windows.Application.Current.MainWindow as MainWindow;
+            if (mainWnd != null)
+            {
+                try
+                {
+                    var youtubePlaylist =await mainWnd.youtubeService.SearchPlaylistsAsync(searchQuery);
+                    string playlistId = "https://www.youtube.com/playlist?list=" + youtubePlaylist[1].PlaylistId.ToString();
+                    System.Windows.MessageBox.Show(playlistId);
+                    ytdlpService.DownloadPlaylist(playlistId, mainWnd.YtdlLocation, mainWnd.DownloadTarget);
+                }catch (Exception ex)
+                {
+                    System.Windows.MessageBox.Show("Something went wrong during download" + ex.Message);
+                }
+            }
+            else
+            {
+                System.Windows.MessageBox.Show("The main window is not initialized or not of the correct type.");
+            }   
         }
     }
 }
